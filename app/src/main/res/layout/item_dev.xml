@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="@dimen/margin_list_item"
+    android:layout_marginStart="@dimen/margin_list_item"
+    app:cardElevation="2dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <View
+            android:id="@+id/item_dev_badgesDivider"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:background="?attr/colorSurface"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/item_dev_badgeGold" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/item_dev_ivProfile"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_profile"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/img_placeholder_profile" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/item_dev_tvLblBadges"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/lbl_badges"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/item_dev_barrierProfileInfo" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/item_dev_barrierProfileInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="bottom"
+            app:constraint_referenced_ids="item_dev_ivProfile,item_dev_tvDevLocation" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/item_dev_btnViewProfile"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/lbl_profile"
+            android:textAllCaps="false"
+            app:icon="@drawable/ic_stack_overflow"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/item_dev_btnVisitWeb"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/item_dev_badgesDivider" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/item_dev_btnVisitWeb"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/lbl_web"
+            android:textAllCaps="false"
+            app:icon="@drawable/ic_web"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/item_dev_btnViewProfile"
+            app:layout_constraintTop_toBottomOf="@id/item_dev_badgesDivider" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/item_dev_tvDevLocation"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/item_dev_ivProfile"
+            app:layout_constraintTop_toBottomOf="@+id/item_dev_tvDevReputation"
+            tools:text="Delhi, India" />
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/item_dev_tvDevName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/item_dev_ivProfile"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Mr. Developer" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/item_dev_tvDevReputation"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/item_dev_ivProfile"
+            app:layout_constraintTop_toBottomOf="@+id/item_dev_tvDevName"
+            tools:text="2.6 K" />
+
+        <com.rk.stackdevs.ui.views.BadgeView
+            android:id="@+id/item_dev_badgeBronze"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:badge_type="bronze"
+            app:layout_constraintBottom_toBottomOf="@+id/item_dev_badgeSilver"
+            app:layout_constraintEnd_toStartOf="@+id/item_dev_badgeSilver"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/item_dev_badgeSilver" />
+
+        <com.rk.stackdevs.ui.views.BadgeView
+            android:id="@+id/item_dev_badgeGold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:badge_type="gold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/item_dev_badgeSilver"
+            app:layout_constraintTop_toBottomOf="@+id/item_dev_tvLblBadges" />
+
+        <com.rk.stackdevs.ui.views.BadgeView
+            android:id="@+id/item_dev_badgeSilver"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:badge_type="silver"
+            app:layout_constraintBottom_toBottomOf="@+id/item_dev_badgeGold"
+            app:layout_constraintEnd_toStartOf="@+id/item_dev_badgeGold"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/item_dev_badgeBronze"
+            app:layout_constraintTop_toTopOf="@+id/item_dev_badgeGold" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

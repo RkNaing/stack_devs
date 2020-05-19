@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary">#6d4c41</color>
+    <color name="primaryLight">#9c786c</color>
+    <color name="primaryDark">#40241a</color>
+
+    <color name="secondary">#e040fb</color>
+    <color name="secondaryLight">#ff79ff</color>
+    <color name="secondaryDark">#aa00c7</color>
+
+    <color name="onPrimary">#ffffff</color>
+    <color name="onSecondary">#ffffff</color>
+
+    <color name="badgeBronze">#CD7F32</color>
+    <color name="badgeGold">#FFD700</color>
+    <color name="badgeSilver">#C0C0C0</color>
+
+
+</resources>

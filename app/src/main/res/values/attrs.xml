@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="BadgeView">
+        <attr name="badge_type">
+            <enum name="bronze" value="15"/>
+            <enum name="gold" value="16"/>
+            <enum name="silver" value="17"/>
+        </attr>
+    </declare-styleable>
+</resources>
