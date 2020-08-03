@@ -36,7 +36,7 @@ dependencies {
     /** Androidx Components **/
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
 
     /** Architecture Components **/
 
@@ -58,8 +58,8 @@ dependencies {
     implementation 'com.google.android.material:material:1.1.0'
 
     /** REST Clients (Retrofit, GSON, OKHTTP) **/
-    def v_retrofit = '2.8.1'
-    def v_okHttpLogging = '4.6.0'
+    def v_retrofit = '2.9.0'
+    def v_okHttpLogging = '4.8.0'
     implementation "com.squareup.retrofit2:retrofit:$v_retrofit"
     implementation "com.squareup.retrofit2:converter-gson:$v_retrofit"
     implementation "com.squareup.okhttp3:logging-interceptor:$v_okHttpLogging"
