@@ -50,10 +50,6 @@ dependencies {
     // Annotation processor
     implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
 
-    def paging_version = "2.1.2"
-    // Paging
-    implementation "androidx.paging:paging-runtime:$paging_version"
-
     /** Google Material Design Components **/
     implementation 'com.google.android.material:material:1.1.0'
 
