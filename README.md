@@ -3,6 +3,6 @@ An Android application showing list of developers from StackOverflow using Pagin
 
 ## Techincal Features
 
-1. Network paging using [Paging Library](https://developer.android.com/topic/libraries/architecture/paging).
+1. Network paging using [Base RecyclerViewAdapterHelper](https://github.com/CymChad/BaseRecyclerViewAdapterHelper).
 2. Display list fetching states using recyclerview multiple veiw type.
 3. OkHttp Network Caching.
