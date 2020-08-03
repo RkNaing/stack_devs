@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:viewBindingIgnore="true">
+
+    <!--region Loading UI -->
+    <ProgressBar
+        android:id="@+id/listItemLoadMorePbLoading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:indeterminate="true"
+        android:padding="8dp"
+        android:visibility="gone"
+        tools:visibility="visible" />
+    <!--endregion-->
+
+    <!--region Error UI -->
+    <LinearLayout
+        android:id="@+id/listItemLoadMoreErrorContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="8dp"
+        android:visibility="gone"
+        tools:visibility="visible">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/listItemLoadMoreIvIcon"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            app:srcCompat="@drawable/img_no_internet" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/listItemLoadMoreTvMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/msg_load_more_failed"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Caption" />
+
+    </LinearLayout>
+    <!--endregion-->
+
+    <!--region Load End UI-->
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/listItemLoadMoreTvEnd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:text="@string/msg_load_more_end"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+        android:visibility="gone"
+        tools:visibility="visible" />
+    <!--endregion-->
+
+</FrameLayout>

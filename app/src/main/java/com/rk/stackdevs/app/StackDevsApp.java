@@ -3,6 +3,9 @@ package com.rk.stackdevs.app;
 import android.app.Application;
 import android.content.Context;
 
+import com.chad.library.adapter.base.module.LoadMoreModuleConfig;
+import com.rk.stackdevs.ui.components.net_paging.AppLoadMoreView;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
@@ -35,5 +38,8 @@ public final class StackDevsApp extends Application {
     public void onCreate() {
         super.onCreate();
         stackDevsApp = this;
+
+        // Setting default load more view for BaseQuickAdapter
+        LoadMoreModuleConfig.setDefLoadMoreView(new AppLoadMoreView());
     }
 }

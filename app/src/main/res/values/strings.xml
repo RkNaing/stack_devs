@@ -12,4 +12,8 @@
     <string name="msg_no_internet">No internet connection. Please kindly connect to internet/WIFI connection.</string>
     <string name="msg_server_error">Whoops… server is going through some problems. Devs are on it. Please try again later.</string>
     <string name="msg_unknown_connection_error">Ahh… having some problem in connecting to server. Please try again.</string>
+    <string name="msg_load_more_failed">Whoops… failed to load more. Tap to retry!</string>
+    <string name="msg_list_load_failed">Whoops… failed to load. Swipe down to retry!</string>
+    <string name="msg_load_more_end">That\'s all for now.</string>
+    <string name="msg_empty_devs">No one\'s here yet…</string>
 </resources>

@@ -1,69 +1,87 @@
 package com.rk.stackdevs.ui.activities;
 
+import android.content.Context;
 import android.os.Bundle;
-import android.view.View;
 
 import com.rk.stackdevs.R;
 import com.rk.stackdevs.app.GlideApp;
 import com.rk.stackdevs.databinding.ActivityDevsListBinding;
-import com.rk.stackdevs.models.ListItemInfo;
+import com.rk.stackdevs.models.Dev;
 import com.rk.stackdevs.ui.adapters.DevsListRVAdapter;
+import com.rk.stackdevs.ui.components.net_paging.NetPagingCallbacks;
 import com.rk.stackdevs.ui.viewmodels.DevsListActivityViewModel;
-import com.rk.stackdevs.ui.viewmodels.factories.ContextViewModelFactory;
 import com.rk.stackdevs.utils.SpacingItemDecoration;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-public class DevsListActivity extends AppCompatActivity {
+public class DevsListActivity extends AppCompatActivity implements NetPagingCallbacks<Dev, DevsListRVAdapter> {
+
+    private ActivityDevsListBinding binding;
+
+    private DevsListRVAdapter devsListRVAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        com.rk.stackdevs.databinding.ActivityDevsListBinding binding = ActivityDevsListBinding.inflate(getLayoutInflater());
+        binding = ActivityDevsListBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        final ContextViewModelFactory contextViewModelFactory = new ContextViewModelFactory(getApplicationContext());
-        final DevsListActivityViewModel devsListActivityViewModel = new ViewModelProvider(this, contextViewModelFactory).get(DevsListActivityViewModel.class);
+        final DevsListActivityViewModel devsListActivityViewModel = new ViewModelProvider(this).get(DevsListActivityViewModel.class);
 
         final SpacingItemDecoration spacingItemDecoration = new SpacingItemDecoration(this, R.dimen.margin_list_item);
         binding.mainDevsRV.addItemDecoration(spacingItemDecoration);
 
-        final DevsListRVAdapter devsListRVAdapter = new DevsListRVAdapter(GlideApp.with(this));
+        devsListRVAdapter = new DevsListRVAdapter(GlideApp.with(this));
         binding.mainDevsRV.setAdapter(devsListRVAdapter);
 
         binding.mainDevsSrl.setColorSchemeColors(ContextCompat.getColor(getApplicationContext(), R.color.secondary));
-        binding.mainDevsSrl.setOnRefreshListener(() -> {
-            binding.mainDevsSrl.setRefreshing(false);
-            devsListActivityViewModel.refreshList();
-        });
 
-        devsListActivityViewModel.getInitialDataRequestStatusLiveData().observe(this, dataRequestStatus -> {
-            if (dataRequestStatus == null) {
-                return;
-            }
-
-            if (dataRequestStatus.isSuccess()) {
-                binding.mainDevsRV.setVisibility(View.VISIBLE);
-                binding.mainListInfoView.clear();
-            } else if (dataRequestStatus.isFail()) {
-                binding.mainDevsRV.setVisibility(View.GONE);
-                @NonNull final ListItemInfo listItemInfo = ListItemInfo.from(dataRequestStatus);
-                binding.mainListInfoView.showMessage(listItemInfo.getErrorMessage(), listItemInfo.getErrorIcon());
-            } else if (dataRequestStatus.isLoading()) {
-                binding.mainDevsRV.setVisibility(View.GONE);
-                binding.mainListInfoView.showLoading(R.string.lbl_loading);
-            }
-
-        });
-
-        devsListActivityViewModel.getDataRequestStatusLiveData().observe(this, devsListRVAdapter::setStatus);
-
-        devsListActivityViewModel.getDevsPagedListLiveData().observe(this, devsListRVAdapter::submitList);
+        devsListActivityViewModel.init(this);
+        devsListRVAdapter.setNewInstance(devsListActivityViewModel.getLoadedDataList());
+        devsListActivityViewModel.refreshList(false);
 
     }
 
+    @Nullable
+    @Override
+    public Context getContext() {
+        return getApplicationContext();
+    }
+
+    @NonNull
+    @Override
+    public Lifecycle lifecycle() {
+        return getLifecycle();
+    }
+
+    @NonNull
+    @Override
+    public RecyclerView getRecyclerView() {
+        return binding.mainDevsRV;
+    }
+
+    @NonNull
+    @Override
+    public DevsListRVAdapter getRecyclerAdapter() {
+        return devsListRVAdapter;
+    }
+
+    @NonNull
+    @Override
+    public SwipeRefreshLayout getSwipeRefresh() {
+        return binding.mainDevsSrl;
+    }
+
+    @Override
+    public void onSwipeRefreshed() {
+
+    }
 }
